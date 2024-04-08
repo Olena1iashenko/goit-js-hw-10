@@ -7,6 +7,7 @@ import iziToast from "izitoast";
 // Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
 
+import errorIcon from '../img/error.png';
 
 const input = document.querySelector('#datetime-picker');
 const timer = document.querySelector('.timer');
@@ -29,7 +30,7 @@ const options = {
         titleColor: 'white',
         messageColor: 'white',
         backgroundColor: 'rgb(239, 64, 64)',
-        iconUrl: 'src/img/alert.svg',
+        iconUrl: errorIcon,
         position: 'topCenter',
         progressBarColor: 'rgb(181, 27, 27)'
     });
