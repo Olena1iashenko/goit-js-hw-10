@@ -25,18 +25,18 @@ fieldset:active {
   border: 1px solid #000;
 }
 
-label {
+form label {
   display: flex;
   flex-direction: column;
   margin: 16px 0px;
 }
 
-input {
+form input {
   border: none;
   margin: 0;
 }
 
-input[type='number'] {
+form input[type='number'] {
   margin-top: 8px;
   width: 340px;
   height: 40px;
@@ -44,8 +44,8 @@ input[type='number'] {
   border-radius: 4px;
 }
 
-input[type='number']:hover,
-input[type='number']:active {
+form input[type='number']:hover,
+form input[type='number']:active {
   border: 1px solid #000;
 }
 
@@ -57,12 +57,12 @@ fieldset label {
   margin: auto 0px;
 }
 
-input[type='radio'] {
+form input[type='radio'] {
   width: 1em;
   height: 1em;
 }
 
-button {
+form button {
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
@@ -74,6 +74,6 @@ button {
   font-size: 16px;
 }
 
-button:hover {
+form button:hover {
   background: #6c8cff;
 }

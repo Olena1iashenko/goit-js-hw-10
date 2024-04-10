@@ -67,8 +67,12 @@ function addZero(value) {
 startButton.addEventListener("click", () => {
   const intervalID = setInterval(() => {
     startButton.disabled = true;
+    input.disabled = true;
     const diff = userSelectedDate - Date.now();
-    if (diff <= 0) { clearInterval(intervalID) };
+    if (diff <= 1000) {
+      clearInterval(intervalID)
+      input.disabled = false;
+    };
 
     const { days, hours, minutes, seconds } = convertMs(diff);
   
