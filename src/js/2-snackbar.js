@@ -4,24 +4,26 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 const form = document.querySelector('.form');
-const delay = document.querySelector('input[name="delay"]');
-const states = document.querySelectorAll('input[name="state"]')
 
 form.addEventListener('submit', onSubmit);
+
+function createPromise(state, delay) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (state === 'fulfilled') resolve(delay);
+            if (state === 'rejected') reject(delay);
+        }, timeout);
+    });
+}
 
 function onSubmit(event) {
     event.preventDefault();
     
-    const state = [...states].find(markup => markup.checked).value;
+    const delay = document.querySelector('input[name="delay"]');
+    const state = document.querySelectorAll('input[name="state"]:checked').value;
 
-    const promise = new Promise((resolve, reject) => {
-        if (state === 'fulfilled') setTimeout(() => resolve(delay), delay);
-        if (state === 'rejected') setTimeout(() => reject(delay), delay);
-    });
-
-    promise.then(
-      (delay) => {
-            console.log(`✅ Fulfilled promise in ${delay.value}ms`);
+    createPromise (state, delay)
+        .then(result => {
             iziToast.show({
         message: `✅ Fulfilled promise in ${delay.value}ms`,
         messageColor: 'white',
@@ -29,9 +31,8 @@ function onSubmit(event) {
         position: 'topRight'
             });
             event.target.reset();
-      },
-      (delay) => {
-          console.log(`❌ Rejected promise in ${delay.value}ms`);
+        })
+        .catch(error => {
           iziToast.show({
         message: `❌ Rejected promise in ${delay.value}ms`,
         messageColor: 'white',

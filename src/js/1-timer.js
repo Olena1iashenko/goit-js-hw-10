@@ -12,8 +12,8 @@ import errorIcon from '../img/error.png';
 const input = document.querySelector('#datetime-picker');
 const timer = document.querySelector('.timer');
 let userSelectedDate;
-const startBtn = document.querySelector('[data-start]');
-startBtn.disabled = true;
+const startButton = document.querySelector('[data-start]');
+startButton.disabled = true;
 
 const options = {
   enableTime: true,
@@ -23,7 +23,7 @@ const options = {
   onClose(selectedDates) {
     console.log(selectedDates[0]);
     if (selectedDates[0] < new Date()) {
-      startBtn.disabled = true;
+      startButton.disabled = true;
       iziToast.show({
         title: 'Error',
         message: 'Please choose a date in the future',
@@ -35,7 +35,7 @@ const options = {
         progressBarColor: 'rgb(181, 27, 27)'
     });
     }
-    startBtn.disabled = false;
+    startButton.disabled = false;
     userSelectedDate = selectedDates[0];
   },
 };
@@ -65,10 +65,10 @@ function addZero(value) {
   return String(value).padStart(2, "0");
 }
 
-startBtn.addEventListener("click", () => {
+startButton.addEventListener("click", () => {
   const intervalID = setInterval(() => {
     const diff = userSelectedDate - Date.now();
-    if (diff <= 1000) { clearInterval(intervalID) };
+    if (diff <= 0) { clearInterval(intervalID) };
     const { days, hours, minutes, seconds } = convertMs(diff);
   
     timer.querySelector("[data-days]").textContent = addZero(days);
