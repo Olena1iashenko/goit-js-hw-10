@@ -23,8 +23,7 @@ const options = {
   onClose(selectedDates) {
     console.log(selectedDates[0]);
     if (selectedDates[0] < new Date()) {
-      startButton.disabled = true;
-      iziToast.show({
+      return iziToast.show({
         title: 'Error',
         message: 'Please choose a date in the future',
         titleColor: 'white',
@@ -35,6 +34,7 @@ const options = {
         progressBarColor: 'rgb(181, 27, 27)'
     });
     }
+    startButton.disabled = false;
     userSelectedDate = selectedDates[0];
   },
 };
@@ -68,6 +68,7 @@ startButton.addEventListener("click", () => {
   const intervalID = setInterval(() => {
     const diff = userSelectedDate - Date.now();
     if (diff <= 0) { clearInterval(intervalID) };
+    
     const { days, hours, minutes, seconds } = convertMs(diff);
   
     timer.querySelector("[data-days]").textContent = addZero(days);
