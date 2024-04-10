@@ -35,7 +35,6 @@ const options = {
         progressBarColor: 'rgb(181, 27, 27)'
     });
     }
-    startButton.disabled = false;
     userSelectedDate = selectedDates[0];
   },
 };
