@@ -66,9 +66,10 @@ function addZero(value) {
 
 startButton.addEventListener("click", () => {
   const intervalID = setInterval(() => {
+    startButton.disabled = true;
     const diff = userSelectedDate - Date.now();
     if (diff <= 0) { clearInterval(intervalID) };
-    
+
     const { days, hours, minutes, seconds } = convertMs(diff);
   
     timer.querySelector("[data-days]").textContent = addZero(days);
